@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "748120195272",
+    "firebase_url": "https://morp-a1b6f-default-rtdb.firebaseio.com",
+    "project_id": "morp-a1b6f",
+    "storage_bucket": "morp-a1b6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748120195272:android:ea1cb5830ebd560d9ca5fd",
+        "android_client_info": {
+          "package_name": "com.dirbuster.morpion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748120195272-8a3kiv1er1mo3qb76pd2rjh82pq8k77p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dirbuster.morpion",
+            "certificate_hash": "f7f4797a9bc583a678a1f04fc85da3cf0430a178"
+          }
+        },
+        {
+          "client_id": "748120195272-hedonm3ljnhg99ebnh95fpmcqe5jggrl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dirbuster.morpion",
+            "certificate_hash": "dad4b0f6c4d2a617b47321480d6487aba5426984"
+          }
+        },
+        {
+          "client_id": "748120195272-snq2isf60jogens0vu75vavd10arohp0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApBPrLZwYWuNfS3f4-FRK7ZEOpg6Iicyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748120195272-snq2isf60jogens0vu75vavd10arohp0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

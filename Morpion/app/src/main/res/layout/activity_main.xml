@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7A99F6"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/buttonResend"
+        android:layout_width="191dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginBottom="40dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:text="Resend"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/fieldPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="136dp"
+        android:ems="10"
+        android:hint="Numero de Téléphone"
+        android:inputType="phone"
+        android:textColor="#FFFCFC"
+        android:textColorHint="#FFFCFC"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonStartVerification"
+        android:layout_width="175dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginBottom="452dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:text="Envoyer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/fieldVerificationCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="164dp"
+        android:ems="10"
+        android:hint="CODE"
+        android:inputType="number|textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStartVerification" />
+
+    <Button
+        android:id="@+id/buttonVerifyPhone"
+        android:layout_width="191dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginBottom="132dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:text="Valider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/phoneAuthFields"
+        android:layout_width="297dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="38dp"
+        android:text="Phone Authentification"
+        android:textColor="#FAF7F7"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
