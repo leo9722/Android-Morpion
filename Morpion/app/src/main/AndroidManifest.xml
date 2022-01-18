@@ -10,13 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Morpion">
         <activity
-            android:name=".MainActivity3"
+            android:name=".Multiplayer"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".Username"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Game"
+            android:exported="false" />
+        <activity
+            android:name=".PhoneAuth"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

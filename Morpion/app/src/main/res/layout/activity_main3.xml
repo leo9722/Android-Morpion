@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#7A99F6"
-    tools:context=".MainActivity3">
+    tools:context=".Username">
 
     <EditText
         android:id="@+id/username"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonplay"
         android:layout_width="117dp"
         android:layout_height="61dp"
         android:layout_marginStart="147dp"

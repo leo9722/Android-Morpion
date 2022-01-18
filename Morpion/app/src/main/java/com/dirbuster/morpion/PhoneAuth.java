@@ -2,7 +2,6 @@ package com.dirbuster.morpion;
 
 
 import android.content.Intent;
-import com.dirbuster.morpion.MainActivity2;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,7 +26,7 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class PhoneAuth extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "PhoneAuthActivity";
 
@@ -130,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (currentUser != null) {
             Log.d(TAG, "Currently Signed in: " + currentUser.getEmail());
-            Toast.makeText(MainActivity.this, "Currently Logged in: " + currentUser.getEmail(), Toast.LENGTH_LONG).show();
+            Toast.makeText(PhoneAuth.this, "Currently Logged in: " + currentUser.getEmail(), Toast.LENGTH_LONG).show();
             start();
 
 
@@ -199,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void start(){
-        Intent intent = new Intent(this,MainActivity3.class);
+        Intent intent = new Intent(this, Username.class);
         startActivity(intent);
     }
     private boolean validatePhoneNumber() {
