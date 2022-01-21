@@ -1,8 +1,10 @@
 package com.dirbuster.morpion;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -45,9 +47,11 @@ public class Multiplayer extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
 
-        SharedPreferences preferences= getSharedPreferences("PREFS",0);
+        SharedPreferences preferences= getSharedPreferences("users",0);
         playerName = preferences.getString("playerName", "");
         roomName = playerName;
+
+        System.out.print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+playerName);
 
         listView = findViewById(R.id.listView);
         button = findViewById(R.id.button9);
@@ -71,7 +75,23 @@ public class Multiplayer extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 roomName = roomList.get(position);
                 roomRef = database.getReference("rooms/" + roomName +"/player2");
-                addRoomEventListener();
+                AlertDialog.Builder builder = new AlertDialog.Builder(Multiplayer.this);
+                builder.setMessage("PLAY OR DELETE")
+                        .setCancelable(false)
+                        .setPositiveButton("PLAY", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Multiplayer.this.addRoomEventListener();
+                            }
+                        })
+                        .setNegativeButton("DELETE", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Multiplayer.this.delete(roomName);
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+
+
                 roomRef.setValue(playerName);
 
 
@@ -123,5 +143,11 @@ public class Multiplayer extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void delete(String roomName){
+
+        database.getReference().child("rooms").child(roomName).removeValue();
+        database.getReference().child("players").child(roomName).removeValue();
     }
 }

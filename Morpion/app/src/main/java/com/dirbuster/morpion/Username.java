@@ -89,9 +89,10 @@ public class Username extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(!playerName.equals("")){
-                    SharedPreferences preferences = getSharedPreferences("PREFS", 0);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("playerName",playerName);
+                    SharedPreferences preferences = getSharedPreferences("users", 0);
+                    SharedPreferences.Editor edit = preferences.edit();
+                    edit.putString("playerName",playerName);
+                    edit.apply();
 
 
                     startActivity(new Intent (getApplicationContext(), Multiplayer.class));
