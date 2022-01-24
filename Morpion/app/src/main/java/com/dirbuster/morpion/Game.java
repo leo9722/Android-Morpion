@@ -243,7 +243,23 @@ public class Game extends AppCompatActivity {
         });
 
         refGagne = database.getReference("gagne");
-        refGagne.setValue(1);
+        refGagne.setValue(-1);
+        refGagne.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int gagne =snapshot.getValue(int.class);
+                if (gagne==1||gagne==2||gagne==0){
+                    peutjouer=false;
+                }else{
+                    peutjouer=true;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         refJoueur = database.getReference("joueur");
         refJoueur.child("j1").setValue(1);
         refJoueur.child("j2").setValue(1);
@@ -257,13 +273,19 @@ public class Game extends AppCompatActivity {
                 Log.d("valeur peut jouer",snapshot.getValue().toString());
                 joueur=snapshot.getValue(int.class);
                 TextView player=(TextView) findViewById(R.id.textPLayer);
+
                 if (role.equals("host") && joueur==1) {
+                    player.setTextColor(Color.WHITE);
                     player.setText("A vous de jouer");
                 }else if (role.equals("guest") && joueur==2) {
+                    player.setTextColor(Color.WHITE);
                     player.setText("A vous de jouer");
                 }else if (joueur!=0){
+                    player.setTextColor(Color.WHITE);
                     player.setText("En attente du deuxième joueur");
                 }
+
+
 
 
             }
@@ -331,8 +353,9 @@ public class Game extends AppCompatActivity {
         TextView player=(TextView) findViewById(R.id.textPLayer);
         player.setTextColor(Color.WHITE);
         peutjouer=true;
-        refGagne.setValue(1);
+        refGagne.setValue(-1);
         refPeutJouer.setValue(2);
+
 
     }
 
