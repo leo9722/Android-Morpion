@@ -7,4 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="joueur1">#ef6461</color>
+    <color name="joueur2">#E4B363</color>
+    <color name="message">#E6CEA7</color>
 </resources>

@@ -11,12 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/button9"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:fontFamily="@font/autour_one"
+        android:backgroundTint="#E8E9EB" />
 
     <Button
         android:id="@+id/button9"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-9dp"
+        android:backgroundTint="#687478"
+        android:fontFamily="@font/autour_one"
         android:text="CREATE ROOM" />
 </RelativeLayout>
