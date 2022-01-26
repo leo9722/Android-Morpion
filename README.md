@@ -30,7 +30,7 @@ Pour la partie Jav nous avons pensé qu’il serait utile d’ajouter un Textfie
 nous avons rajouté une méthode permettant à l’utilisateur ( si il est connecté d’avoir cette information et de ne pas devoir s’authentifier à nouveau )
 Enfin, si l'authentification est correcte, on accède à notre interface de multi users.
 
-image
+![alt text](https://github.com/leo9722/Android-Morpion/blob/master/img/id.PNG)
 
 
 ## Multi Players
@@ -45,13 +45,15 @@ Ainsi un Textfield, un bouton et une liste fait l’affaire.
 Pour le code il fallait donc insérer au niveau de la base de donnée le nom du joueur ainsi que la room créer avec le nom du joueur associé. Puis il fallait ajouter en temps réel les rooms créer s' il y en avait. Enfin il fallait rediriger l’utilisateur vers le jeu. Lors de la création de cette partie, une problématique évidente  est apparue, l’utilisateur doit pouvoir supprimer une room si il le veut.
 Ainsi la création d’une alerte fut la solution à ce problème.
 
-image 
+![alt text](https://github.com/leo9722/Android-Morpion/blob/master/img/multi.PNG)
+![alt text](https://github.com/leo9722/Android-Morpion/blob/master/img/multi2.PNG)
 
 ## Le Jeu
 
 Enfin il s'agit d'un Tic tac Toe des plus simples, où deux joueurs s'affrontent pour remporter la victoire
 
-image
+![alt text](https://github.com/leo9722/Android-Morpion/blob/master/img/jeu.PNG)
+![alt text](https://github.com/leo9722/Android-Morpion/blob/master/img/fin.PNG)
 
 
 
