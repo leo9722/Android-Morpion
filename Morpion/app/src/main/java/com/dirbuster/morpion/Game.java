@@ -41,6 +41,8 @@ public class Game extends AppCompatActivity {
     int joueur1;
     int joueur2;
     int message;
+    int couleurgagnant;
+    TextView player;
 
 
     @Override
@@ -50,6 +52,17 @@ public class Game extends AppCompatActivity {
         joueur1 = Color.parseColor("#EF6461");
         joueur2 = Color.parseColor("#E4B363");
         message=Color.parseColor("#687478");
+        tb[0]=(Button) findViewById(R.id.button0);
+        tb[1]=(Button) findViewById(R.id.button1);
+        tb[2]=(Button) findViewById(R.id.button2);
+        tb[3]=(Button) findViewById(R.id.button3);
+        tb[4]=(Button) findViewById(R.id.button4);
+        tb[5]=(Button) findViewById(R.id.button5);
+        tb[6]=(Button) findViewById(R.id.button6);
+        tb[7]=(Button) findViewById(R.id.button7);
+        tb[8]=(Button) findViewById(R.id.button8);
+        player=(TextView) findViewById(R.id.textPLayer);
+
 
         game();
     }
@@ -73,175 +86,49 @@ public class Game extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                int basique = Color.parseColor("#313638");
+                /************************************ Colorie les cases en fonctions de leurs valeurs ****************************************/
 
-                Button bouton0=(Button) findViewById(R.id.button0);
-                if(snapshot.child(String.valueOf(0)).getValue(int.class)==2){
-                    bouton0.setBackgroundColor(joueur1);
-                }else if(snapshot.child(String.valueOf(0)).getValue(int.class)==1){
-                    bouton0.setBackgroundColor(joueur2);
-                }else if(snapshot.child(String.valueOf(0)).getValue(int.class)==0){
-                    bouton0.setBackgroundColor(basique);
+                int basique = Color.parseColor("#313638");
+                for (int j = 0; j < 9; j++) {
+                    if(snapshot.child(String.valueOf(j)).getValue(int.class)==2){
+                        tb[j].setBackgroundColor(joueur1);
+                    }else if(snapshot.child(String.valueOf(j)).getValue(int.class)==1){
+                        tb[j].setBackgroundColor(joueur2);
+                    }else if(snapshot.child(String.valueOf(j)).getValue(int.class)==0){
+                        tb[j].setBackgroundColor(basique);
+                    }
+
                 }
-                Button bouton1=(Button) findViewById(R.id.button1);
-                if(snapshot.child(String.valueOf(1)).getValue(int.class)==2){
-                    bouton1.setBackgroundColor(joueur1);
-                }else if(snapshot.child(String.valueOf(1)).getValue(int.class)==1){
-                    bouton1.setBackgroundColor(joueur2);
-                }else if(snapshot.child(String.valueOf(1)).getValue(int.class)==0){
-                    bouton1.setBackgroundColor(basique);
-                }
-                Button bouton2=(Button) findViewById(R.id.button2);
-                if(snapshot.child(String.valueOf(2)).getValue(int.class)==2){
-                    bouton2.setBackgroundColor(joueur1);
-                }else if(snapshot.child(String.valueOf(2)).getValue(int.class)==1){
-                    bouton2.setBackgroundColor(joueur2);
-                }else if(snapshot.child(String.valueOf(2)).getValue(int.class)==0){
-                    bouton2.setBackgroundColor(basique);
-                }
-                Button bouton3=(Button) findViewById(R.id.button3);
-                if(snapshot.child(String.valueOf(3)).getValue(int.class)==2){
-                    bouton3.setBackgroundColor(joueur1);
-                }else if(snapshot.child(String.valueOf(3)).getValue(int.class)==1){
-                    bouton3.setBackgroundColor(joueur2);
-                }else if(snapshot.child(String.valueOf(3)).getValue(int.class)==0){
-                    bouton3.setBackgroundColor(basique);
-                }
-                Button bouton4=(Button) findViewById(R.id.button4);
-                if(snapshot.child(String.valueOf(4)).getValue(int.class)==2){
-                    bouton4.setBackgroundColor(joueur1);
-                }else if(snapshot.child(String.valueOf(4)).getValue(int.class)==1){
-                    bouton4.setBackgroundColor(joueur2);
-                }else if(snapshot.child(String.valueOf(4)).getValue(int.class)==0){
-                    bouton4.setBackgroundColor(basique);
-                }
-                Button bouton5=(Button) findViewById(R.id.button5);
-                if(snapshot.child(String.valueOf(5)).getValue(int.class)==2){
-                    bouton5.setBackgroundColor(joueur1);
-                }else if(snapshot.child(String.valueOf(5)).getValue(int.class)==1){
-                    bouton5.setBackgroundColor(joueur2);
-                }else if(snapshot.child(String.valueOf(5)).getValue(int.class)==0){
-                    bouton5.setBackgroundColor(basique);
-                }
-                Button bouton6=(Button) findViewById(R.id.button6);
-                if(snapshot.child(String.valueOf(6)).getValue(int.class)==2){
-                    bouton6.setBackgroundColor(joueur1);
-                }else if(snapshot.child(String.valueOf(6)).getValue(int.class)==1){
-                    bouton6.setBackgroundColor(joueur2);
-                }else if(snapshot.child(String.valueOf(6)).getValue(int.class)==0){
-                    bouton6.setBackgroundColor(basique);
-                }
-                Button bouton7=(Button) findViewById(R.id.button7);
-                if(snapshot.child(String.valueOf(7)).getValue(int.class)==2){
-                    bouton7.setBackgroundColor(joueur1);
-                }else if(snapshot.child(String.valueOf(7)).getValue(int.class)==1){
-                    bouton7.setBackgroundColor(joueur2);
-                }else if(snapshot.child(String.valueOf(7)).getValue(int.class)==0){
-                    bouton7.setBackgroundColor(basique);
-                }
-                Button bouton8=(Button) findViewById(R.id.button8);
-                if(snapshot.child(String.valueOf(8)).getValue(int.class)==2){
-                    bouton8.setBackgroundColor(joueur1);
-                }else if(snapshot.child(String.valueOf(8)).getValue(int.class)==1){
-                    bouton8.setBackgroundColor(joueur2);
-                }else if(snapshot.child(String.valueOf(8)).getValue(int.class)==0){
-                    bouton8.setBackgroundColor(basique);
-                }
+
+                /************************************ test si toutes les cases sont remplie ****************************************/
 
                 int testcaserempli=0;
-
-                for (int i = 0; i < 9; i++) {
+                for (int i = 0; i < 9; i++) { // test si toute les cases sont rempl
                     tv[i]=snapshot.child(String.valueOf(i)).getValue(int.class);
                     if (tv[i]==0){
                         testcaserempli+=1;
                     }
-
-                }
-                int couleurgagnant;
-                TextView player=(TextView) findViewById(R.id.textPLayer);
-                if((tv[0]==tv[1]&& tv[0]==tv[2] )&&tv[0]!=0){ //lignes
-                    peutjouer=false;
-                    fini = true;
-                    refGagne.setValue(tv[0]);
-                    refPeutJouer.setValue(0);
-                    joueur=0;
-
-                    couleurgagnant=(tv[0]==1)?joueur2:joueur1;
-                    player.setTextColor(couleurgagnant);
-                    player.setText("Le joueur "+tv[0]+" a gagné");
-
-
-                }else if((tv[3]==tv[4]&& tv[3]==tv[5] )&&tv[3]!=0){
-                    peutjouer=false;
-                    fini = true;
-                    refGagne.setValue(tv[0]);
-                    refPeutJouer.setValue(0);
-                    joueur=0;
-                    couleurgagnant=(tv[3]==1)?joueur2:joueur1;
-                    player.setTextColor(couleurgagnant);
-                    player.setText("Le joueur "+tv[3]+" a gagné");
-                }else if((tv[6]==tv[7]&& tv[6]==tv[8] )&&tv[6]!=0){
-                    peutjouer=false;
-                    fini = true;
-                    refGagne.setValue(tv[0]);
-                    refPeutJouer.setValue(0);
-                    joueur=0;
-                    couleurgagnant=(tv[6]==1)?joueur2:joueur1;
-                    player.setTextColor(couleurgagnant);
-                    player.setText("Le joueur "+tv[6]+" a gagné");
-                }else if((tv[0]==tv[3]&& tv[0]==tv[6] )&&tv[0]!=0){ //colonnes
-                    peutjouer=false;
-                    fini = true;
-                    refGagne.setValue(tv[0]);
-                    refPeutJouer.setValue(0);
-                    joueur=0;
-                    couleurgagnant=(tv[0]==1)?joueur2:joueur1;
-                    player.setTextColor(couleurgagnant);
-                    player.setText("Le joueur "+tv[0]+" a gagné");
-
-
-                }else if((tv[1]==tv[4]&& tv[1]==tv[7] )&&tv[1]!=0){
-                    peutjouer=false;
-                    fini = true;
-                    refGagne.setValue(tv[1]);
-                    refPeutJouer.setValue(0);
-                    joueur=0;
-                    couleurgagnant=(tv[1]==1)?joueur2:joueur1;
-                    player.setTextColor(couleurgagnant);
-                    player.setText("Le joueur "+tv[1]+" a gagné");
-                }else if((tv[2]==tv[5]&& tv[2]==tv[8] )&&tv[2]!=0){
-                    peutjouer=false;
-                    fini = true;
-                    refGagne.setValue(tv[2]);
-                    refPeutJouer.setValue(0);
-                    joueur=0;
-                    couleurgagnant=(tv[2]==1)?joueur2:joueur1;
-                    player.setTextColor(couleurgagnant);
-                    player.setText("Le joueur "+tv[2]+" a gagné");
                 }
 
-                if((tv[0]==tv[4]&& tv[0]==tv[8] )&&tv[0]!=0){ //diagonales
-                    peutjouer=false;
-                    fini = true;
-                    refGagne.setValue(tv[0]);
-                    refPeutJouer.setValue(0);
-                    joueur=0;
-                    couleurgagnant=(tv[0]==1)?joueur2:joueur1;
-                    player.setTextColor(couleurgagnant);
-                    player.setText("Le joueur "+tv[0]+" a gagné");
+                /************************************ détermine le gagant ****************************************/
 
-
-                }else if((tv[2]==tv[4]&& tv[2]==tv[6] )&&tv[2]!=0){
-                    peutjouer=false;
-                    fini = true;
-                    refGagne.setValue(tv[2]);
-                    refPeutJouer.setValue(0);
-                    joueur=0;
-                    couleurgagnant=(tv[2]==1)?joueur2:joueur1;
-                    player.setTextColor(couleurgagnant);
-                    player.setText("Le joueur "+tv[2]+" a gagné");
-
-                }else if(testcaserempli==0 && peutjouer!=false){
+                if((tv[0]==tv[1]&& tv[0]==tv[2] )&&tv[0]!=0){ //ligne 1
+                    wingame(tv[0]);
+                }else if((tv[3]==tv[4]&& tv[3]==tv[5] )&&tv[3]!=0){//ligne 2
+                    wingame(tv[3]);
+                }else if((tv[6]==tv[7]&& tv[6]==tv[8] )&&tv[6]!=0){//ligne 3
+                    wingame(tv[6]);
+                }else if((tv[0]==tv[3]&& tv[0]==tv[6] )&&tv[0]!=0){ //colonne 1
+                    wingame(tv[0]);
+                }else if((tv[1]==tv[4]&& tv[1]==tv[7] )&&tv[1]!=0){//colonne 2
+                    wingame(tv[1]);
+                }else if((tv[2]==tv[5]&& tv[2]==tv[8] )&&tv[2]!=0){//colonne 3
+                    wingame(tv[2]);
+                } else if((tv[0]==tv[4]&& tv[0]==tv[8] )&&tv[0]!=0){ //diagonale 1
+                    wingame(tv[0]);
+                }else if((tv[2]==tv[4]&& tv[2]==tv[6] )&&tv[2]!=0){ //diagonale 2
+                    wingame(tv[2]);
+                }else if(testcaserempli==0 && peutjouer!=false){ // égalité
                     peutjouer=false;
                     fini = true;
                     refGagne.setValue(0);
@@ -263,6 +150,8 @@ public class Game extends AppCompatActivity {
         refGagne.setValue(-1);
         refGagne.addValueEventListener(new ValueEventListener() {
             @Override
+            /************************************ Détermine si on peut jouer ou non****************************************/
+
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int gagne =snapshot.getValue(int.class);
                 if (gagne==1||gagne==2||gagne==0){
@@ -288,9 +177,11 @@ public class Game extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+            /************************************ Gestion des messages****************************************/
+
                 Log.d("valeur peut jouer",snapshot.getValue().toString());
                 joueur=snapshot.getValue(int.class);
-                TextView player=(TextView) findViewById(R.id.textPLayer);
+
 
                 if (role.equals("host") && joueur==1) {
                     player.setTextColor(message);
@@ -314,6 +205,8 @@ public class Game extends AppCompatActivity {
             }
         });
 
+
+        /************************************ Attribution des roles****************************************/
         SharedPreferences preferences = getSharedPreferences("users",0);
         playerName = preferences.getString("playerName", "");
 
@@ -321,8 +214,6 @@ public class Game extends AppCompatActivity {
 
         if (extras != null){
             roomName = extras.getString("roomName");
-            System.out.print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+roomName);
-            System.out.print("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"+playerName);
 
             if(roomName.equals(playerName)){
                 role = "host";
@@ -336,6 +227,7 @@ public class Game extends AppCompatActivity {
 
     }
 
+    /************************************ Interaction avec les boutons du jeu****************************************/
 
     public void clickButton( View view){
         Button bouton =(Button) findViewById(view.getId());
@@ -366,25 +258,29 @@ public class Game extends AppCompatActivity {
 
     }
 
+    /************************************ bouton reset****************************************/
+
     @SuppressLint("ResourceAsColor")
     public void clickReset(View view){
-        /*game();
-        TextView player=(TextView) findViewById(R.id.textPLayer);
-        player.setTextColor(message);
-        peutjouer=true;
-        refPeutJouer.setValue(2);
-        refGagne.setValue(-1);*/
-        Reset();
-
-    }
-
-    public void Reset(){
         game();
-        TextView player=(TextView) findViewById(R.id.textPLayer);
         player.setTextColor(message);
         peutjouer=true;
         refPeutJouer.setValue(2);
         refGagne.setValue(-1);
+
+    }
+
+    /************************************ gestion des paramètres lors de la victoire d'un joueur****************************************/
+
+    public void wingame(int nbwinner){
+        peutjouer=false;
+        fini = true;
+        refGagne.setValue(nbwinner);
+        refPeutJouer.setValue(0);
+        joueur=0;
+        couleurgagnant=(nbwinner==1)?joueur2:joueur1;
+        player.setTextColor(couleurgagnant);
+        player.setText("Le joueur "+nbwinner+" a gagné");
 
 
     }
